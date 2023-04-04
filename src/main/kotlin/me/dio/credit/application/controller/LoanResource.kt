@@ -1,5 +1,6 @@
 package me.dio.credit.application.controller
 
+import jakarta.validation.Valid
 import me.dio.credit.application.dto.LoanDto
 import me.dio.credit.application.dto.LoanView
 import me.dio.credit.application.dto.LoanViewList
@@ -25,7 +26,7 @@ class LoanResource(
 ) {
 
     @PostMapping
-    fun saveLoan(@RequestBody loanDto: LoanDto): ResponseEntity<String> {
+    fun saveLoan(@RequestBody @Valid loanDto: LoanDto): ResponseEntity<String> {
         this.loanService.save(loanDto.toEntity())
         return ResponseEntity.status(HttpStatus.CREATED).body("Loan created.")
     }

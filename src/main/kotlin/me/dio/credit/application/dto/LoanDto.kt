@@ -1,6 +1,8 @@
 package me.dio.credit.application.dto
 
 
+import jakarta.validation.constraints.Future
+import jakarta.validation.constraints.NotNull
 import me.dio.credit.application.entity.Customer
 import me.dio.credit.application.entity.Loan
 import java.math.BigDecimal
@@ -8,10 +10,10 @@ import java.time.LocalDate
 
 
 data class LoanDto(
-    val loanValue: BigDecimal,
-    val firstInstallmentDate: LocalDate,
-    val numberOfInstallments: Int,
-    val customerId: Long
+    @field:NotNull(message = "Invalid") val loanValue: BigDecimal,
+    @field:Future(message = "Invalid") val firstInstallmentDate: LocalDate,
+    @field:NotNull(message = "Invalid") val numberOfInstallments: Int,
+    @field:NotNull(message = "Invalid") val customerId: Long
 
 ) {
 

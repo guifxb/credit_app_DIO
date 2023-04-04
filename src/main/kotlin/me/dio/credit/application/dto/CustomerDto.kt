@@ -1,19 +1,25 @@
 package me.dio.credit.application.dto
 
+import jakarta.validation.constraints.Email
+import jakarta.validation.constraints.NotEmpty
+import jakarta.validation.constraints.NotNull
 import me.dio.credit.application.entity.Address
 import me.dio.credit.application.entity.Customer
+import org.hibernate.validator.constraints.br.CPF
 import java.math.BigDecimal
 
 
 data class CustomerDto(
-    val firstName: String,
-    val lastName: String,
-    val cpf: String,
-    val income: BigDecimal,
-    val email: String,
-    val password: String,
-    val zipCode: String,
-    val street: String
+    @field:NotEmpty(message = "Invalid") val firstName: String,
+    @field:NotEmpty(message = "Invalid") val lastName: String,
+    @field:NotEmpty(message = "Invalid")
+    @CPF(message = "Invalid") val cpf: String,
+    @field:NotNull(message = "Invalid") val income: BigDecimal,
+    @field:NotEmpty(message = "Invalid")
+    @Email(message = "Invalid") val email: String,
+    @field:NotEmpty(message = "Invalid") val password: String,
+    @field:NotEmpty(message = "Invalid") val zipCode: String,
+    @field:NotEmpty(message = "Invalid") val street: String
 
 ) {
 
